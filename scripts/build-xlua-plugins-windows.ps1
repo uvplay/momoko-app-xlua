@@ -15,7 +15,7 @@ $xluaVersion = "48b6867060971714ff2c1148a43bd8a3121909af"
 $luapbVersion = "106b9089a547acf38f2fc6c043f9c74e20cba0be"
 
 try {
-    foreach ($dir in $cacheDir, $buildDir, $outputDir) {
+    foreach ($dir in $cacheDir, $buildDir) {
         if ([Directory]::Exists($dir)) {
             [Directory]::Delete($dir, $true)
         }
@@ -63,8 +63,9 @@ set (THIRDPART_SRC ${THIRDPART_SRC} ${LPB_SRC})
     & "$cacheDir\cmake\bin\cmake.exe" -G "Visual Studio 15 2017 Win64" "$cacheDir\xlua\build"
     Pop-Location
     & "$cacheDir\cmake\bin\cmake.exe" --build "$buildDir\windows\x86_64" --config Release
-
-    [Directory]::CreateDirectory("$outputDir\Plugins\x86_64")
+    if (-not [Directory]::Exists("$outputDir\Plugins\x86_64")) {
+        [Directory]::CreateDirectory("$outputDir\Plugins\x86_64") | Out-Null
+    }
     [File]::Move("$buildDir\windows\x86_64\Release\xlua.dll", "$outputDir\Plugins\x86_64\xlua.dll")
 
     [Directory]::CreateDirectory("$buildDir\windows\x86") | Out-Null
@@ -72,7 +73,9 @@ set (THIRDPART_SRC ${THIRDPART_SRC} ${LPB_SRC})
     & "$cacheDir\cmake\bin\cmake.exe" -G "Visual Studio 15 2017" "$cacheDir\xlua\build"
     Pop-Location
     & "$cacheDir\cmake\bin\cmake.exe" --build "$buildDir\windows\x86" --config Release
-    [Directory]::CreateDirectory("$outputDir\Plugins\x86")
+    if (-not [Directory]::Exists("$outputDir\Plugins\x86")) {
+        [Directory]::CreateDirectory("$outputDir\Plugins\x86") | Out-Null
+    }
     [File]::Move("$buildDir\windows\x86\Release\xlua.dll", "$outputDir\Plugins\x86\xlua.dll")
 }
 catch {
