@@ -13,8 +13,7 @@ cmake_cmd="$temp_dir/cmake-3.12.2-Darwin-x86_64/CMake.app/Contents/bin/cmake"
 
 xlua_commit="68f9751c04341df317cd68db521b76e184ae4c94"
 curl -sLo "$temp_dir/$xlua_commit.zip" "https://github.com/Tencent/xLua/archive/$xlua_commit.zip"
-unzip -f "$temp_dir/$xlua_commit.zip" -d "$temp_dir" 
-echo $?
+unzip -o "$temp_dir/$xlua_commit.zip" -d "$temp_dir" 
 xlua_src_dir="$temp_dir/xLua-$xlua_commit"
 
 os_config_dir="$temp_dir/configs/os"

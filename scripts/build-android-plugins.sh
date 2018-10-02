@@ -8,17 +8,17 @@ build_dir="$project_root/build"
 
 mkdir -p "$temp_dir" "$build_dir"
 
-curl -L "https://cmake.org/files/v3.12/cmake-3.12.2-Linux-x86_64.tar.gz" | tar -zxf - -C "$temp_dir"
+curl -sL "https://cmake.org/files/v3.12/cmake-3.12.2-Linux-x86_64.tar.gz" | tar -zxf - -C "$temp_dir"
 cmake_cmd="$temp_dir/cmake-3.12.2-Linux-x86_64/bin/cmake"
 
 ndk_name="android-ndk-r10e-linux-x86_64"
-curl -Lo "$temp_dir/$ndk_name.zip" "https://dl.google.com/android/repository/$ndk_name.zip"
-7za x -o"$temp_dir" "$temp_dir/$ndk_name.zip"
+curl -sLo "$temp_dir/$ndk_name.zip" "https://dl.google.com/android/repository/$ndk_name.zip"
+unzip -o "$temp_dir/$ndk_name.zip" -d "$temp_dir"
 export ANDROID_NDK="$temp_dir/android-ndk-r10e"
 
 xlua_commit="68f9751c04341df317cd68db521b76e184ae4c94"
-curl -Lo "$temp_dir/$xlua_commit.zip" "https://github.com/Tencent/xLua/archive/$xlua_commit.zip"
-7za x -o"$temp_dir" "$temp_dir/$xlua_commit.zip"
+curl -sLo "$temp_dir/$xlua_commit.zip" "https://github.com/Tencent/xLua/archive/$xlua_commit.zip"
+unzip -o  "$temp_dir/$xlua_commit.zip" -d "$temp_dir"
 xlua_src_dir="$temp_dir/xLua-$xlua_commit"
 
 v7a_config_dir="$temp_dir/configs/armeabi-v7a"
