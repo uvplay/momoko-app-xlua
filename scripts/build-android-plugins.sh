@@ -31,7 +31,7 @@ cd "$v7a_config_dir" && "$cmake_cmd" \
 	-DANDROID_NATIVE_API_LEVEL="android-9" \
 	"$xlua_src_dir/build"
 "$cmake_cmd" --build "$v7a_config_dir" --config Release
-mkdir -p "$v7a_build_dir" && mv "$v7a_config_dir/libxlua.so" "$v7a_build_dir/libxlua.so"
+mv "$v7a_config_dir/libxlua.so" "$v7a_build_dir/libxlua.so"
 
 x86_config_dir="$temp_dir/configs/x86"
 x86_build_dir="$build_dir/Plugins/Android/libs/x86"
