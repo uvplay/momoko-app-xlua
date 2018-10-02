@@ -6,8 +6,8 @@ $ErrorActionPreference = "Stop"
 
 try {
     $projectRoot = Join-Path -Path $PSScriptRoot -ChildPath ".." -Resolve
-    $tempDir = "$projectRoot\cache"
-    $buildDir = "$projectRoot\builds"
+    $tempDir = "$projectRoot\temp"
+    $buildDir = "$projectRoot\build"
     [Directory]::CreateDirectory($tempDir) | Out-Null
     [Directory]::CreateDirectory($buildDir) | Out-Null
 
