@@ -16,11 +16,9 @@ try {
     Expand-Archive -Path "$tempDir\cmake-3.12.2-win64-x64.zip" -DestinationPath $tempDir
     $cmakeCmd = "$tempDir\cmake-3.12.2-win64-x64\bin\cmake.exe"
 
-    $xLuaCommit = "68f9751c04341df317cd68db521b76e184ae4c94"
-    $uri = "https://github.com/Tencent/xLua/archive/$xLuaCommit.zip"
-    Invoke-WebRequest -Uri $uri -OutFile "$tempDir\xLua-$xLuaCommit.zip"
-    Expand-Archive -Path "$tempDir\xLua-$xLuaCommit.zip" -DestinationPath $tempDir
-    $xLuaDir = "$tempDir\xLua-$xLuaCommit"
+    Invoke-WebRequest -Uri "https://github.com/Tencent/xLua/archive/v2.1.12.zip" -OutFile "$tempDir\v2.1.12.zip"
+    Expand-Archive -Path "$tempDir\v2.1.12.zip" -DestinationPath $tempDir
+    $xLuaDir = "$tempDir\xLua-2.1.12"
 
     $x86ConfigDir = "$tempDir\configs\x86"
     $x86BuildDir = "$buildDir\Plugins\x86"
