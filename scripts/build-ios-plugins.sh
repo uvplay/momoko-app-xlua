@@ -11,7 +11,7 @@ mkdir -p "$temp_dir" "$xlua_build_dir"
 curl -sL "https://cmake.org/files/v3.12/cmake-3.12.2-Darwin-x86_64.tar.gz" | tar -zxf - -C "$temp_dir"
 cmake_cmd="$temp_dir/cmake-3.12.2-Darwin-x86_64/CMake.app/Contents/bin/cmake"
 
-curl -sL "https://github.com/Tencent/xLua/archive/2.1.12.tar.gz" | tar -zxf - -C "$temp_dir"
+curl -sL "https://github.com/Tencent/xLua/archive/v2.1.12.tar.gz" | tar -zxf - -C "$temp_dir"
 xlua_src_dir="$temp_dir/xLua-2.1.12"
 
 os_config_dir="$temp_dir/configs/os"

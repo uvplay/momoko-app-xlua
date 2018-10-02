@@ -15,7 +15,7 @@ curl -sLo "$temp_dir/android-ndk-r10e-linux-x86_64.zip" "https://dl.google.com/a
 unzip -oq "$temp_dir/android-ndk-r10e-linux-x86_64.zip" -d "$temp_dir"
 export ANDROID_NDK="$temp_dir/android-ndk-r10e"
 
-curl -sL "https://github.com/Tencent/xLua/archive/2.1.12.tar.gz" | tar -zxf - -C "$temp_dir"
+curl -sL "https://github.com/Tencent/xLua/archive/v2.1.12.tar.gz" | tar -zxf - -C "$temp_dir"
 xlua_src_dir="$temp_dir/xLua-2.1.12"
 
 v7a_config_dir="$temp_dir/configs/armeabi-v7a"
