@@ -15,22 +15,22 @@ curl -sL "https://github.com/Tencent/xLua/archive/v2.1.12.tar.gz" | tar -zxf - -
 xlua_src_dir="$temp_dir/xLua-2.1.12"
 
 os_config_dir="$temp_dir/configs/os"
-os_xlua_build_dir="$xlua_build_dir/Plugins/iOS"
-mkdir -p "$os_config_dir" "$os_xlua_build_dir"
+os_build_dir="$xlua_build_dir/Plugins/iOS/os"
+mkdir -p "$os_config_dir" "$os_build_dir"
 cd "$os_config_dir" && "$cmake_cmd" \
 	-DCMAKE_TOOLCHAIN_FILE="$xlua_src_dir/build/cmake/iOS.cmake" \
 	-GXcode \
 	"$xlua_src_dir/build"
 "$cmake_cmd" --build "$os_config_dir" --config Release
-mv "$os_config_dir/Release-iphoneos/libxlua.a" "$os_xlua_build_dir/libxlua.a"
+mv "$os_config_dir/Release-iphoneos/libxlua.a" "$os_build_dir/libxlua.a"
 
 simulator_config_dir="$temp_dir/configs/simulator"
-simulator_xlua_build_dir="$xlua_build_dir/Plugins/iOS/simulator"
-mkdir -p "$simulator_config_dir" "$simulator_xlua_build_dir"
+simulator_build_dir="$xlua_build_dir/Plugins/iOS/simulator~"
+mkdir -p "$simulator_config_dir" "$simulator_build_dir"
 cd "$simulator_config_dir" && "$cmake_cmd" \
 	-DIOS_PLATFORM=SIMULATOR \
 	-DCMAKE_TOOLCHAIN_FILE="$xlua_src_dir/build/cmake/iOS.cmake" \
 	-GXcode \
 	"$xlua_src_dir/build"
 "$cmake_cmd" --build "$simulator_config_dir" --config Release
-mv "$simulator_config_dir/Release-iphonesimulator/libxlua.a" "$simulator_xlua_build_dir/libxlua.a"
+mv "$simulator_config_dir/Release-iphonesimulator/libxlua.a" "$simulator_build_dir/libxlua.a"
