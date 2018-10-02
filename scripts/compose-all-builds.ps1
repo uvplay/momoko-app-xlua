@@ -36,7 +36,7 @@ try {
     [File]::Copy("$xluaSrcDir\Assets\Plugins\x86\xlua.dll.meta", "$xluaBuildDir\Plugins\x86\xlua.dll.meta")
     [File]::Copy("$xluaSrcDir\Assets\Plugins\x86_64\xlua.dll.meta", "$xluaBuildDir\Plugins\x86_64\xlua.dll.meta")
 
-    Compress-Archive -Path $xluaBuildDir "$projectRoot\dist\XLua-2.1.12.0.zip"
+    Compress-Archive -Path $xluaBuildDir "$projectRoot\dist\momoko-app-xlua-v2.1.12.0.zip"
 }
 catch {
     Write-Output $PSItem | Format-List -Force
